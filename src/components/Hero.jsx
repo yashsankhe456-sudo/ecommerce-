@@ -1,13 +1,8 @@
 import React, { useState, useEffect } from "react";
-import { ArrowRight, ChevronLeft, ChevronRight, Play } from "lucide-react";
+import { ArrowRight, ChevronLeft, ChevronRight } from "lucide-react";
 import { motion, AnimatePresence } from "motion/react";
 
-interface HeroProps {
-  onExploreClick: () => void;
-  onCategorySelect: (catId: string) => void;
-}
-
-export default function Hero({ onExploreClick, onCategorySelect }: HeroProps) {
+export default function Hero({ onExploreClick, onCategorySelect }) {
   const [currentSlide, setCurrentSlide] = useState(0);
 
   const slides = [
@@ -47,12 +42,12 @@ export default function Hero({ onExploreClick, onCategorySelect }: HeroProps) {
     return () => clearInterval(timer);
   }, [slides.length]);
 
-  const handlePrev = (e: React.MouseEvent) => {
+  const handlePrev = (e) => {
     e.stopPropagation();
     setCurrentSlide((prev) => (prev - 1 + slides.length) % slides.length);
   };
 
-  const handleNext = (e: React.MouseEvent) => {
+  const handleNext = (e) => {
     e.stopPropagation();
     setCurrentSlide((prev) => (prev + 1) % slides.length);
   };

@@ -7,19 +7,17 @@ import Testimonials from "./components/Testimonials";
 import Footer from "./components/Footer";
 import CartDrawer from "./components/CartDrawer";
 import ProductDetailModal from "./components/ProductDetailModal";
-import { Product, CartItem } from "./types";
-import { PRODUCTS } from "./data";
-import { Sparkles, ArrowRight, Heart, Sparkle, Eye } from "lucide-react";
+import { Sparkle, ArrowRight } from "lucide-react";
 import { motion, AnimatePresence } from "motion/react";
 
 export default function App() {
   // Core persistent states
   const [cartCount, setCartCount] = useState(0);
-  const [cartItems, setCartItems] = useState<CartItem[]>(() => {
+  const [cartItems, setCartItems] = useState(() => {
     const saved = localStorage.getItem("lumina_cart");
     return saved ? JSON.parse(saved) : [];
   });
-  const [wishlistIds, setWishlistIds] = useState<string[]>(() => {
+  const [wishlistIds, setWishlistIds] = useState(() => {
     const saved = localStorage.getItem("lumina_wishlist");
     return saved ? JSON.parse(saved) : [];
   });
@@ -27,9 +25,9 @@ export default function App() {
   // Client layout states
   const [activeCategory, setActiveCategory] = useState("all");
   const [searchQuery, setSearchQuery] = useState("");
-  const [selectedProduct, setSelectedProduct] = useState<Product | null>(null);
+  const [selectedProduct, setSelectedProduct] = useState(null);
   const [isCartOpen, setIsCartOpen] = useState(false);
-  const [toastMessage, setToastMessage] = useState<string | null>(null);
+  const [toastMessage, setToastMessage] = useState(null);
 
   // Sync cart counter
   useEffect(() => {
@@ -44,7 +42,7 @@ export default function App() {
   }, [wishlistIds]);
 
   // Trigger floating alert banner
-  const triggerToast = (msg: string) => {
+  const triggerToast = (msg) => {
     setToastMessage(msg);
     setTimeout(() => {
       setToastMessage(null);
@@ -52,7 +50,7 @@ export default function App() {
   };
 
   // Add Item to cart bag
-  const handleAddToCart = (product: Product, selectedColor: string, selectedSize: string) => {
+  const handleAddToCart = (product, selectedColor, selectedSize) => {
     const customId = `${product.id}-${selectedColor}-${selectedSize}`;
     
     setCartItems((prevItems) => {
@@ -79,7 +77,7 @@ export default function App() {
   };
 
   // Update Item count
-  const handleUpdateQuantity = (id: string, newQty: number) => {
+  const handleUpdateQuantity = (id, newQty) => {
     if (newQty <= 0) {
       handleRemoveItem(id);
     } else {
@@ -90,7 +88,7 @@ export default function App() {
   };
 
   // Remove individual Item
-  const handleRemoveItem = (id: string) => {
+  const handleRemoveItem = (id) => {
     const item = cartItems.find((i) => i.id === id);
     if (item) {
       setCartItems((prevItems) => prevItems.filter((i) => i.id !== id));
@@ -99,7 +97,7 @@ export default function App() {
   };
 
   // Move from Bag to Wishlist
-  const handleMoveToWishlist = (item: CartItem) => {
+  const handleMoveToWishlist = (item) => {
     if (!wishlistIds.includes(item.product.id)) {
       setWishlistIds((prev) => [...prev, item.product.id]);
     }
@@ -107,7 +105,7 @@ export default function App() {
   };
 
   // Toggle Heart Wishlist directly
-  const handleToggleWishlist = (product: Product) => {
+  const handleToggleWishlist = (product) => {
     const exists = wishlistIds.includes(product.id);
     if (exists) {
       setWishlistIds((prev) => prev.filter((id) => id !== product.id));
@@ -132,7 +130,7 @@ export default function App() {
   };
 
   // Directly handle category switches
-  const handleCategorySelect = (id: string) => {
+  const handleCategorySelect = (id) => {
     setActiveCategory(id);
     setSearchQuery(""); // Clear searches for frictionless division navigating
     
@@ -151,7 +149,6 @@ export default function App() {
     }
     triggerToast(`Showing ${wishlistIds.length} favorited items in catalog`);
     
-    // Sort or filter products currently favorited (We can simulate this by filtering query search to match)
     const elem = document.getElementById("shop-catalog");
     if (elem) {
       elem.scrollIntoView({ behavior: "smooth" });

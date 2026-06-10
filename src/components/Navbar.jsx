@@ -2,17 +2,6 @@ import React, { useState, useEffect } from "react";
 import { Search, ShoppingBag, Heart, Menu, X, ArrowRight, User } from "lucide-react";
 import { motion, AnimatePresence } from "motion/react";
 
-interface NavbarProps {
-  cartCount: number;
-  onCartClick: () => void;
-  wishlistCount: number;
-  onWishlistClick: () => void;
-  searchQuery: string;
-  onSearchChange: (query: string) => void;
-  activeCategory: string;
-  onCategorySelect: (catId: string) => void;
-}
-
 export default function Navbar({
   cartCount,
   onCartClick,
@@ -22,7 +11,7 @@ export default function Navbar({
   onSearchChange,
   activeCategory,
   onCategorySelect,
-}: NavbarProps) {
+}) {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [showSearchInput, setShowSearchInput] = useState(false);
@@ -230,7 +219,7 @@ export default function Navbar({
                       onClick={() => {
                         onCategorySelect(link.id);
                         setIsMobileMenuOpen(false);
-                      }}
+                       }}
                       className={`text-left py-2 px-3 text-sm font-medium tracking-wide uppercase transition-colors rounded-sm flex items-center justify-between ${
                         activeCategory === link.id
                           ? "bg-stone-900 text-stone-50"

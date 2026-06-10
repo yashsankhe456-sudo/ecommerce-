@@ -1,11 +1,11 @@
 import React, { useState } from "react";
-import { ArrowUp, ArrowRight, Check, Send } from "lucide-react";
+import { ArrowUp, Check, Send } from "lucide-react";
 
 export default function Footer() {
   const [email, setEmail] = useState("");
   const [isSubscribed, setIsSubscribed] = useState(false);
 
-  const handleSubscribe = (e: React.FormEvent) => {
+  const handleSubscribe = (e) => {
     e.preventDefault();
     if (email.trim()) {
       setIsSubscribed(true);

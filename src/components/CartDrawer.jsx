@@ -1,17 +1,6 @@
 import React, { useState } from "react";
-import { CartItem } from "../types";
 import { X, Trash2, Plus, Minus, CreditCard, ShoppingBag, ShieldCheck, Heart } from "lucide-react";
 import { motion, AnimatePresence } from "motion/react";
-
-interface CartDrawerProps {
-  isOpen: boolean;
-  onClose: () => void;
-  cartItems: CartItem[];
-  onUpdateQuantity: (id: string, newQty: number) => void;
-  onRemoveItem: (id: string) => void;
-  onMoveToWishlist: (item: CartItem) => void;
-  onClearCartNow: () => void;
-}
 
 export default function CartDrawer({
   isOpen,
@@ -21,8 +10,8 @@ export default function CartDrawer({
   onRemoveItem,
   onMoveToWishlist,
   onClearCartNow,
-}: CartDrawerProps) {
-  const [checkoutStep, setCheckoutStep] = useState<"cart" | "shipping" | "complete">("cart");
+}) {
+  const [checkoutStep, setCheckoutStep] = useState("cart");
   const [address, setAddress] = useState({ name: "", email: "", line: "", city: "" });
 
   // Basic e-commerce logic
@@ -32,7 +21,7 @@ export default function CartDrawer({
   const taxCharge = parseFloat((itemsSubtotal * 0.08).toFixed(2));
   const orderTotal = itemsSubtotal + shippingCharge + taxCharge;
 
-  const handleCheckoutSubmit = (e: React.FormEvent) => {
+  const handleCheckoutSubmit = (e) => {
     e.preventDefault();
     if (address.name && address.email && address.line) {
       setCheckoutStep("complete");
@@ -100,7 +89,7 @@ export default function CartDrawer({
                         )}
                         <span>${itemsSubtotal} / ${freeShippingThreshold}</span>
                       </div>
-                      <div className="w-full bg-stone-250 h-1.5 rounded-full overflow-hidden bg-stone-200">
+                      <div className="w-full bg-stone-200 h-1.5 rounded-full overflow-hidden">
                         <div
                           className="h-full bg-amber-700 transition-all duration-500 ease-out"
                           style={{ width: `${Math.min((itemsSubtotal / freeShippingThreshold) * 100, 100)}%` }}
@@ -112,7 +101,7 @@ export default function CartDrawer({
                   {/* Empty Bag State */}
                   {cartItems.length === 0 ? (
                     <div className="flex flex-col items-center justify-center text-center h-[55vh] p-6">
-                      <div className="bg-stone-100 p-4 rounded-full text-stone-400 mb-4 h-16 w-16 flex items-center justify-center">
+                      <div className="bg-stone-100 p-4 rounded-full text-stone-400 mb-4 h-16 w-16 flex items-center justify-center mx-auto">
                         <ShoppingBag className="w-7 h-7" />
                       </div>
                       <h4 className="font-serif text-lg font-bold text-stone-900">Your bag is currently empty</h4>
@@ -155,7 +144,7 @@ export default function CartDrawer({
                               <div className="flex items-center border border-stone-200 rounded-sm bg-stone-50">
                                 <button
                                   onClick={() => onUpdateQuantity(item.id, item.quantity - 1)}
-                                  className="p-1 px-2 text-stone-500 hover:text-stone-950 hover:bg-stone-100 transition-colors cursor-pointer"
+                                  className="p-1 px-2 text-stone-500 hover:text-stone-955 hover:bg-stone-105 transition-colors cursor-pointer"
                                   aria-label="Decrease quantity"
                                 >
                                   <Minus className="w-3 h-3" />
@@ -165,7 +154,7 @@ export default function CartDrawer({
                                 </span>
                                 <button
                                   onClick={() => onUpdateQuantity(item.id, item.quantity + 1)}
-                                  className="p-1 px-2 text-stone-500 hover:text-stone-950 hover:bg-stone-100 transition-colors cursor-pointer"
+                                  className="p-1 px-2 text-stone-500 hover:text-stone-955 hover:bg-stone-105 transition-colors cursor-pointer"
                                   aria-label="Increase quantity"
                                 >
                                   <Plus className="w-3 h-3" />
@@ -300,7 +289,7 @@ export default function CartDrawer({
                     Thank you, <span className="font-bold text-stone-800">{address.name}</span>. An invoice receipt has been directed to <span className="font-semibold text-stone-800">{address.email}</span>. Our artisans are meticulously sizing and wrapping your selection in raw-hemp keepsake boxes.
                   </p>
 
-                  <div className="border border-stone-250/50 bg-stone-100 rounded-md p-4/5 text-left text-[11px] text-stone-600 font-mono space-y-1 max-w-xs mx-auto mt-4">
+                  <div className="border border-stone-250/50 bg-stone-100 rounded-md p-4/5 text-left text-[11px] text-stone-600 font-mono space-y-1 max-w-xs mx-auto mt-4 p-4">
                     <p className="font-bold text-stone-800 uppercase text-[10px] pb-1 border-b border-stone-200 mb-1.5">Atelier Destination</p>
                     <p>{address.line}</p>
                     <p>{address.city}</p>

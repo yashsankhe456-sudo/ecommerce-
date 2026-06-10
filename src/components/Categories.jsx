@@ -1,15 +1,9 @@
 import React from "react";
-import { Category } from "../types";
 import { CATEGORIES } from "../data";
 import { ArrowRight } from "lucide-react";
 import { motion } from "motion/react";
 
-interface CategoriesProps {
-  onCategorySelect: (id: string) => void;
-  activeCategory: string;
-}
-
-export default function Categories({ onCategorySelect, activeCategory }: CategoriesProps) {
+export default function Categories({ onCategorySelect, activeCategory }) {
   // We exclude the "all" collection from the category display cards list to keep it dedicated to specific curated divisions
   const activeDivisions = CATEGORIES.filter((c) => c.id !== "all");
 

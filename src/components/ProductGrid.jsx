@@ -1,17 +1,7 @@
 import React, { useState } from "react";
-import { Product } from "../types";
 import { PRODUCTS } from "../data";
-import { Grid, List, SlidersHorizontal, Heart, ShoppingBag, Eye, Star, SearchX, Check } from "lucide-react";
-import { motion, AnimatePresence } from "motion/react";
-
-interface ProductGridProps {
-  activeCategory: string;
-  searchQuery: string;
-  onProductClick: (product: Product) => void;
-  onAddToCart: (product: Product, selectedColor: string, selectedSize: string) => void;
-  onToggleWishlist: (product: Product) => void;
-  wishlistIds: string[];
-}
+import { SlidersHorizontal, Heart, ShoppingBag, Eye, Star, SearchX, Check } from "lucide-react";
+import { motion } from "motion/react";
 
 export default function ProductGrid({
   activeCategory,
@@ -20,9 +10,9 @@ export default function ProductGrid({
   onAddToCart,
   onToggleWishlist,
   wishlistIds,
-}: ProductGridProps) {
-  const [sortBy, setSortBy] = useState<"featured" | "price-asc" | "price-desc" | "rating">("featured");
-  const [addedProductId, setAddedProductId] = useState<string | null>(null);
+}) {
+  const [sortBy, setSortBy] = useState("featured");
+  const [addedProductId, setAddedProductId] = useState(null);
 
   // Filter Items
   const filteredProducts = PRODUCTS.filter((product) => {
@@ -42,7 +32,7 @@ export default function ProductGrid({
     return 0; // Default featured sequence
   });
 
-  const handleQuickAdd = (e: React.MouseEvent, product: Product) => {
+  const handleQuickAdd = (e, product) => {
     e.stopPropagation();
     // Default selecting first color & size for effortless single-click checkout flow
     const defaultColor = product.colors[0] || "Default";
@@ -78,7 +68,7 @@ export default function ProductGrid({
             <select
               id="sort"
               value={sortBy}
-              onChange={(e) => setSortBy(e.target.value as any)}
+              onChange={(e) => setSortBy(e.target.value)}
               className="bg-white border border-stone-200 rounded-sm text-xs py-1.5 pl-2.5 pr-8 text-stone-750 focus:outline-hidden focus:border-stone-500 font-sans cursor-pointer focus:ring-0"
             >
               <option value="featured">Featured curated</option>
@@ -206,7 +196,7 @@ export default function ProductGrid({
                         
                         {/* Rating panel */}
                         <div className="flex items-center space-x-1 text-amber-500">
-                          <Star className="w-3 h-3 fill-amber-500 stroke-amber-500" />
+                          <Star className="w-3.5 h-3.5 fill-amber-500 stroke-amber-500" />
                           <span className="font-mono text-[9px] font-bold text-stone-600">
                             {product.rating}
                           </span>

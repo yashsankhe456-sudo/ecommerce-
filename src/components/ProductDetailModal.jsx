@@ -1,15 +1,6 @@
 import React, { useState, useEffect } from "react";
-import { Product } from "../types";
-import { X, Star, ShoppingBag, Check, Heart, ShieldCheck, CornerDownRight } from "lucide-react";
+import { X, Star, ShoppingBag, Check, Heart, ShieldCheck } from "lucide-react";
 import { motion, AnimatePresence } from "motion/react";
-
-interface ProductDetailModalProps {
-  product: Product | null;
-  onClose: () => void;
-  onAddToCart: (product: Product, selectedColor: string, selectedSize: string) => void;
-  onToggleWishlist: (product: Product) => void;
-  isWishlisted: boolean;
-}
 
 export default function ProductDetailModal({
   product,
@@ -17,7 +8,7 @@ export default function ProductDetailModal({
   onAddToCart,
   onToggleWishlist,
   isWishlisted,
-}: ProductDetailModalProps) {
+}) {
   const [selectedColor, setSelectedColor] = useState("");
   const [selectedSize, setSelectedSize] = useState("");
   const [isAdded, setIsAdded] = useState(false);
@@ -33,7 +24,7 @@ export default function ProductDetailModal({
 
   if (!product) return null;
 
-  const handleBagSubmit = (e: React.FormEvent) => {
+  const handleBagSubmit = (e) => {
     e.preventDefault();
     onAddToCart(product, selectedColor, selectedSize);
     setIsAdded(true);

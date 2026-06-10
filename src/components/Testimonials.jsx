@@ -44,7 +44,7 @@ export default function Testimonials() {
                     <Star
                       key={i}
                       className={`w-4 h-4 ${
-                        i < Math.floor(t.rating) ? "fill-amber-500 stroke-amber-500" : "fill-amber-200"
+                        i < Math.floor(t.rating) ? "fill-amber-500 stroke-amber-500" : "fill-amber-250"
                       }`}
                     />
                   ))}

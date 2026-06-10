@@ -1,6 +1,4 @@
-import { Product, Category, Testimonial } from "./types";
-
-export const CATEGORIES: Category[] = [
+export const CATEGORIES = [
   {
     id: "all",
     name: "All Collections",
@@ -38,7 +36,7 @@ export const CATEGORIES: Category[] = [
   },
 ];
 
-export const PRODUCTS: Product[] = [
+export const PRODUCTS = [
   {
     id: "p1",
     name: "Classic Wool Trench Coat",
@@ -145,7 +143,7 @@ export const PRODUCTS: Product[] = [
   },
 ];
 
-export const TESTIMONIALS: Testimonial[] = [
+export const TESTIMONIALS = [
   {
     id: "t1",
     name: "Elena Rostova",
