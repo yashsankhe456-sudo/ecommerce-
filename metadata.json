@@ -1,0 +1,6 @@
+{
+  "name": "Minimalist Fashion Storefront",
+  "description": "An ultra-premium, interactive fashion e-commerce storefront showcasing curated seasonal collections, dynamic filtering, interactive product quick-views, and an integrated shopping cart drawer.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
