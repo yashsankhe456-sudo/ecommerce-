@@ -83,3 +83,6 @@ LUMINA is built using highly performant React combined with industry-standard ut
 - **100% Traceability**: Every piece embeds a secure coordinate stamp trace back to organic raw flax fields or leather workshops.
 - **Slow Loop Exchange**: Complimentary modifications and size tailoring to maximize product lifetime.
 2. **Circular Recycled Coupons**: Return worn Lumina garments to receive a 20% recycled coupon while our artisans repair and donate or upcycle the materials.
+
+  <img width="1242" height="737" alt="image" src="https://github.com/user-attachments/assets/0d7d2e85-5b3c-43fd-bad0-9a201699e10f" />
+
