@@ -85,4 +85,11 @@ LUMINA is built using highly performant React combined with industry-standard ut
 2. **Circular Recycled Coupons**: Return worn Lumina garments to receive a 20% recycled coupon while our artisans repair and donate or upcycle the materials.
 
   <img width="1242" height="737" alt="image" src="https://github.com/user-attachments/assets/0d7d2e85-5b3c-43fd-bad0-9a201699e10f" />
+  <img width="1221" height="727" alt="image" src="https://github.com/user-attachments/assets/a27e6704-3902-4751-9f13-6ccf7a967487" />
+  <img width="1235" height="692" alt="image" src="https://github.com/user-attachments/assets/e01adf16-4c86-493f-b863-aacd097fc739" />
+  <img width="1232" height="732" alt="image" src="https://github.com/user-attachments/assets/6182b65a-a4e1-4bad-838c-c3fe5c2adb65" />
+<img width="1242" height="721" alt="image" src="https://github.com/user-attachments/assets/0c176027-ac99-49c1-becc-63273d03baa3" />
+
+
+
 
